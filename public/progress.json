@@ -193,7 +193,7 @@
       "dependsOn": [
         "group-1"
       ],
-      "status": "in-progress",
+      "status": "done",
       "fixes": [
         "V3",
         "D1"
@@ -329,7 +329,7 @@
         "group-1",
         "group-3"
       ],
-      "status": "in-progress",
+      "status": "done",
       "fixes": [
         "F1",
         "F2",
@@ -358,9 +358,9 @@
         {
           "id": "g5-s4",
           "title": "Add skeleton screens to PartyCard",
-          "done": false,
+          "done": true,
           "owner": "samuel",
-          "note": "Skeleton SCSS exists in handoff doc; not yet wired to PartyCard component"
+          "note": "Skeleton placeholders wired in Hub/Discover/Home loading states"
         },
         {
           "id": "g5-s5",
@@ -410,7 +410,7 @@
         "group-2",
         "group-3"
       ],
-      "status": "in-progress",
+      "status": "done",
       "fixes": [
         "V1",
         "V2",
