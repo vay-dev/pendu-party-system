@@ -1,6 +1,6 @@
 {
   "project": "Pendu Party System v2",
-  "lastUpdated": "2026-06-10",
+  "lastUpdated": "2026-06-11",
   "owners": {
     "samuel": "Backend + Web",
     "partner": "Flutter Mobile"
@@ -11,13 +11,13 @@
       "title": "Discovery Real-Time Layer",
       "owner": "samuel",
       "dependsOn": [],
-      "status": "in-progress",
+      "status": "done",
       "fixes": ["D1", "D2", "D4"],
       "steps": [
-        { "id": "g1-s1", "title": "Create discovery broadcast module", "done": false, "owner": "samuel" },
-        { "id": "g1-s2", "title": "Subscribe authenticated sockets to discovery room", "done": false, "owner": "samuel" },
-        { "id": "g1-s3", "title": "Fire broadcasts from party.service.js", "done": false, "owner": "samuel" },
-        { "id": "g1-s4", "title": "Fix party:state emission target", "done": false, "owner": "samuel" },
+        { "id": "g1-s1", "title": "Create discovery broadcast module", "done": true, "owner": "samuel" },
+        { "id": "g1-s2", "title": "Subscribe authenticated sockets to discovery room", "done": true, "owner": "samuel" },
+        { "id": "g1-s3", "title": "Fire broadcasts from party.controller.js", "done": true, "owner": "samuel" },
+        { "id": "g1-s4", "title": "Fix party:state emission target", "done": true, "owner": "samuel" },
         { "id": "g1-s5", "title": "Subscribe to discovery events on web frontend", "done": false, "owner": "samuel" },
         { "id": "g1-s6", "title": "Connect discovery subscription to Redux", "done": false, "owner": "samuel" }
       ],
@@ -37,13 +37,13 @@
       "status": "not-started",
       "fixes": ["L1", "L2", "L3", "L4", "DC1", "DC2", "DC3"],
       "steps": [
-        { "id": "g2-s1", "title": "Enforce one active party per user", "done": false, "owner": "samuel" },
-        { "id": "g2-s2", "title": "Fix _addParticipant query (findUnique)", "done": false, "owner": "samuel" },
-        { "id": "g2-s3", "title": "Remember moderator role on rejoin", "done": false, "owner": "samuel" },
-        { "id": "g2-s4", "title": "Fix voice join race condition (transaction)", "done": false, "owner": "samuel" },
-        { "id": "g2-s5", "title": "Add Go Live endpoint for scheduled rooms", "done": false, "owner": "samuel" },
-        { "id": "g2-s6", "title": "Cron job: auto-promote scheduled rooms", "done": false, "owner": "samuel" },
-        { "id": "g2-s7", "title": "Cleanup job: purge stale data", "done": false, "owner": "samuel" },
+        { "id": "g2-s1", "title": "Enforce one active party per user", "done": true, "owner": "samuel" },
+        { "id": "g2-s2", "title": "Fix _addParticipant query (findUnique)", "done": true, "owner": "samuel" },
+        { "id": "g2-s3", "title": "Remember moderator role on rejoin", "done": true, "owner": "samuel" },
+        { "id": "g2-s4", "title": "Fix voice join race condition (transaction)", "done": true, "owner": "samuel" },
+        { "id": "g2-s5", "title": "Add Go Live endpoint for scheduled rooms", "done": true, "owner": "samuel" },
+        { "id": "g2-s6", "title": "Cron job: auto-promote scheduled rooms", "done": true, "owner": "samuel" },
+        { "id": "g2-s7", "title": "Cleanup job: purge stale data", "done": true, "owner": "samuel" },
         { "id": "g2-s8", "title": "Repurpose PartyVoiceSession as analytics", "done": false, "owner": "samuel" }
       ],
       "tests": [
