@@ -34,7 +34,7 @@
       "title": "Lifecycle Integrity",
       "owner": "samuel",
       "dependsOn": [],
-      "status": "not-started",
+      "status": "done",
       "fixes": ["L1", "L2", "L3", "L4", "DC1", "DC2", "DC3"],
       "steps": [
         { "id": "g2-s1", "title": "Enforce one active party per user", "done": true, "owner": "samuel" },
@@ -61,14 +61,14 @@
       "title": "Socket Contract Cleanup",
       "owner": "samuel",
       "dependsOn": ["group-1"],
-      "status": "not-started",
+      "status": "in-progress",
       "fixes": ["V3", "D1"],
       "steps": [
-        { "id": "g3-s1", "title": "Add voiceSocketId to PartyParticipant schema", "done": false, "owner": "samuel" },
-        { "id": "g3-s2", "title": "Store socket ID on voice join", "done": false, "owner": "samuel" },
-        { "id": "g3-s3", "title": "Target signaling by socket ID, not user ID", "done": false, "owner": "samuel" },
-        { "id": "g3-s4", "title": "Clear voiceSocketId on disconnect", "done": false, "owner": "samuel" },
-        { "id": "g3-s5", "title": "Document socket event contract (SOCKET_CONTRACT.md)", "done": false, "owner": "samuel" }
+        { "id": "g3-s1", "title": "Add voiceSocketId to PartyParticipant schema", "done": true, "owner": "samuel" },
+        { "id": "g3-s2", "title": "Store socket ID on voice join", "done": true, "owner": "samuel" },
+        { "id": "g3-s3", "title": "Target signaling by socket ID, not user ID", "done": true, "owner": "samuel" },
+        { "id": "g3-s4", "title": "Clear voiceSocketId on disconnect", "done": true, "owner": "samuel" },
+        { "id": "g3-s5", "title": "Document socket event contract (SOCKET_CONTRACT.md)", "done": true, "owner": "samuel" }
       ],
       "tests": [
         { "id": "g3-t1", "title": "Signal arrives only in correct tab (multi-tab)", "passed": false },
@@ -82,20 +82,20 @@
       "title": "Moderation Hardening",
       "owner": "samuel",
       "dependsOn": ["group-2"],
-      "status": "not-started",
+      "status": "done",
       "fixes": ["M1", "M2", "M3"],
       "steps": [
-        { "id": "g4-s1", "title": "Add PartyBan model to Prisma schema", "done": false, "owner": "samuel" },
-        { "id": "g4-s2", "title": "Create ban record on kick", "done": false, "owner": "samuel" },
-        { "id": "g4-s3", "title": "Check ban on all join paths", "done": false, "owner": "samuel" },
-        { "id": "g4-s4", "title": "Add unban endpoint (owner only)", "done": false, "owner": "samuel" },
-        { "id": "g4-s5", "title": "Expose moderator permission boundaries in API", "done": false, "owner": "samuel" }
+        { "id": "g4-s1", "title": "Add PartyBan model to Prisma schema", "done": true, "owner": "samuel" },
+        { "id": "g4-s2", "title": "Create ban record on kick", "done": true, "owner": "samuel" },
+        { "id": "g4-s3", "title": "Check ban on all join paths", "done": true, "owner": "samuel" },
+        { "id": "g4-s4", "title": "Add unban endpoint (owner only)", "done": true, "owner": "samuel" },
+        { "id": "g4-s5", "title": "Expose moderator permission boundaries in API", "done": true, "owner": "samuel" }
       ],
       "tests": [
-        { "id": "g4-t1", "title": "Kicked user cannot rejoin via invite code", "passed": false },
-        { "id": "g4-t2", "title": "Unban allows rejoin", "passed": false },
-        { "id": "g4-t3", "title": "Moderator cannot kick another moderator", "passed": false },
-        { "id": "g4-t4", "title": "Permissions object present in GET /api/party/:id", "passed": false }
+        { "id": "g4-t1", "title": "Kicked user cannot rejoin via invite code", "passed": true },
+        { "id": "g4-t2", "title": "Unban allows rejoin", "passed": true },
+        { "id": "g4-t3", "title": "Moderator cannot kick another moderator", "passed": true },
+        { "id": "g4-t4", "title": "Permissions object present in GET /api/party/:id", "passed": true }
       ]
     },
     {
