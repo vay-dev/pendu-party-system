@@ -409,7 +409,7 @@
         "group-2",
         "group-3"
       ],
-      "status": "not-started",
+      "status": "in-progress",
       "fixes": [
         "V1",
         "V2",
@@ -420,38 +420,44 @@
         {
           "id": "g6-s1",
           "title": "Install mediasoup, scaffold worker",
-          "done": false,
-          "owner": "samuel"
+          "done": true,
+          "owner": "samuel",
+          "note": "v3.19.19 already installed; workers initialized in server.js"
         },
         {
           "id": "g6-s2",
           "title": "Create mediasoup worker manager",
-          "done": false,
-          "owner": "samuel"
+          "done": true,
+          "owner": "samuel",
+          "note": "Reused existing mediasoup.service.js createWorkers()"
         },
         {
           "id": "g6-s3",
           "title": "Create room router registry",
-          "done": false,
-          "owner": "samuel"
+          "done": true,
+          "owner": "samuel",
+          "note": "Reused existing getOrCreateRouter() per party roomId"
         },
         {
           "id": "g6-s4",
           "title": "Create SFU socket handler",
-          "done": false,
-          "owner": "samuel"
+          "done": true,
+          "owner": "samuel",
+          "note": "party.sfu.socket.js with join/connect_transport/produce/consume/leave/mute"
         },
         {
           "id": "g6-s5",
           "title": "Register SFU handlers conditionally",
-          "done": false,
-          "owner": "samuel"
+          "done": true,
+          "owner": "samuel",
+          "note": "PARTY_SFU_ENABLED env var toggles mesh vs SFU in socket/index.js"
         },
         {
           "id": "g6-s6",
           "title": "TURN server configuration",
           "done": false,
-          "owner": "samuel"
+          "owner": "samuel",
+          "note": "Client-side ICE servers; deferred to frontend integration"
         },
         {
           "id": "g6-s7",
