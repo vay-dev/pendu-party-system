@@ -1,0 +1,194 @@
+{
+  "project": "Pendu Party System v2",
+  "lastUpdated": "2026-06-10",
+  "owners": {
+    "samuel": "Backend + Web",
+    "partner": "Flutter Mobile"
+  },
+  "groups": [
+    {
+      "id": "group-1",
+      "title": "Discovery Real-Time Layer",
+      "owner": "samuel",
+      "dependsOn": [],
+      "status": "in-progress",
+      "fixes": ["D1", "D2", "D4"],
+      "steps": [
+        { "id": "g1-s1", "title": "Create discovery broadcast module", "done": false, "owner": "samuel" },
+        { "id": "g1-s2", "title": "Subscribe authenticated sockets to discovery room", "done": false, "owner": "samuel" },
+        { "id": "g1-s3", "title": "Fire broadcasts from party.service.js", "done": false, "owner": "samuel" },
+        { "id": "g1-s4", "title": "Fix party:state emission target", "done": false, "owner": "samuel" },
+        { "id": "g1-s5", "title": "Subscribe to discovery events on web frontend", "done": false, "owner": "samuel" },
+        { "id": "g1-s6", "title": "Connect discovery subscription to Redux", "done": false, "owner": "samuel" }
+      ],
+      "tests": [
+        { "id": "g1-t1", "title": "New party appears on Hub without refresh", "passed": false },
+        { "id": "g1-t2", "title": "Ended party disappears without refresh", "passed": false },
+        { "id": "g1-t3", "title": "party:state no longer fires into void", "passed": false },
+        { "id": "g1-t4", "title": "Discovery room membership verified", "passed": false },
+        { "id": "g1-t5", "title": "Participant count updates in real-time", "passed": false }
+      ]
+    },
+    {
+      "id": "group-2",
+      "title": "Lifecycle Integrity",
+      "owner": "samuel",
+      "dependsOn": [],
+      "status": "not-started",
+      "fixes": ["L1", "L2", "L3", "L4", "DC1", "DC2", "DC3"],
+      "steps": [
+        { "id": "g2-s1", "title": "Enforce one active party per user", "done": false, "owner": "samuel" },
+        { "id": "g2-s2", "title": "Fix _addParticipant query (findUnique)", "done": false, "owner": "samuel" },
+        { "id": "g2-s3", "title": "Remember moderator role on rejoin", "done": false, "owner": "samuel" },
+        { "id": "g2-s4", "title": "Fix voice join race condition (transaction)", "done": false, "owner": "samuel" },
+        { "id": "g2-s5", "title": "Add Go Live endpoint for scheduled rooms", "done": false, "owner": "samuel" },
+        { "id": "g2-s6", "title": "Cron job: auto-promote scheduled rooms", "done": false, "owner": "samuel" },
+        { "id": "g2-s7", "title": "Cleanup job: purge stale data", "done": false, "owner": "samuel" },
+        { "id": "g2-s8", "title": "Repurpose PartyVoiceSession as analytics", "done": false, "owner": "samuel" }
+      ],
+      "tests": [
+        { "id": "g2-t1", "title": "Second party creation returns 409", "passed": false },
+        { "id": "g2-t2", "title": "Go Live promotes scheduled room to live", "passed": false },
+        { "id": "g2-t3", "title": "Auto-promote cron fires correctly", "passed": false },
+        { "id": "g2-t4", "title": "Simultaneous voice join respects maxParticipants", "passed": false },
+        { "id": "g2-t5", "title": "Ended room and related rows purged after 30d", "passed": false },
+        { "id": "g2-t6", "title": "Moderator retains role after rejoin", "passed": false },
+        { "id": "g2-t7", "title": "Query logs confirm findUnique usage", "passed": false }
+      ]
+    },
+    {
+      "id": "group-3",
+      "title": "Socket Contract Cleanup",
+      "owner": "samuel",
+      "dependsOn": ["group-1"],
+      "status": "not-started",
+      "fixes": ["V3", "D1"],
+      "steps": [
+        { "id": "g3-s1", "title": "Add voiceSocketId to PartyParticipant schema", "done": false, "owner": "samuel" },
+        { "id": "g3-s2", "title": "Store socket ID on voice join", "done": false, "owner": "samuel" },
+        { "id": "g3-s3", "title": "Target signaling by socket ID, not user ID", "done": false, "owner": "samuel" },
+        { "id": "g3-s4", "title": "Clear voiceSocketId on disconnect", "done": false, "owner": "samuel" },
+        { "id": "g3-s5", "title": "Document socket event contract (SOCKET_CONTRACT.md)", "done": false, "owner": "samuel" }
+      ],
+      "tests": [
+        { "id": "g3-t1", "title": "Signal arrives only in correct tab (multi-tab)", "passed": false },
+        { "id": "g3-t2", "title": "voiceSocketId set in DB on join, cleared on disconnect", "passed": false },
+        { "id": "g3-t3", "title": "Closing tab sets isInVoice=false", "passed": false },
+        { "id": "g3-t4", "title": "SOCKET_CONTRACT.md reviewed by mobile partner", "passed": false }
+      ]
+    },
+    {
+      "id": "group-4",
+      "title": "Moderation Hardening",
+      "owner": "samuel",
+      "dependsOn": ["group-2"],
+      "status": "not-started",
+      "fixes": ["M1", "M2", "M3"],
+      "steps": [
+        { "id": "g4-s1", "title": "Add PartyBan model to Prisma schema", "done": false, "owner": "samuel" },
+        { "id": "g4-s2", "title": "Create ban record on kick", "done": false, "owner": "samuel" },
+        { "id": "g4-s3", "title": "Check ban on all join paths", "done": false, "owner": "samuel" },
+        { "id": "g4-s4", "title": "Add unban endpoint (owner only)", "done": false, "owner": "samuel" },
+        { "id": "g4-s5", "title": "Expose moderator permission boundaries in API", "done": false, "owner": "samuel" }
+      ],
+      "tests": [
+        { "id": "g4-t1", "title": "Kicked user cannot rejoin via invite code", "passed": false },
+        { "id": "g4-t2", "title": "Unban allows rejoin", "passed": false },
+        { "id": "g4-t3", "title": "Moderator cannot kick another moderator", "passed": false },
+        { "id": "g4-t4", "title": "Permissions object present in GET /api/party/:id", "passed": false }
+      ]
+    },
+    {
+      "id": "group-5",
+      "title": "Frontend State Layer (Web)",
+      "owner": "samuel",
+      "dependsOn": ["group-1", "group-3"],
+      "status": "not-started",
+      "fixes": ["F1", "F2", "F3", "D2"],
+      "steps": [
+        { "id": "g5-s1", "title": "Create Redux partySlice", "done": false, "owner": "samuel" },
+        { "id": "g5-s2", "title": "Register slice in store", "done": false, "owner": "samuel" },
+        { "id": "g5-s3", "title": "Wire discovery socket to Redux dispatch", "done": false, "owner": "samuel" },
+        { "id": "g5-s4", "title": "Add skeleton screens to PartyCard", "done": false, "owner": "samuel" },
+        { "id": "g5-s5", "title": "Optimistic join/leave in usePartyActions", "done": false, "owner": "samuel" }
+      ],
+      "tests": [
+        { "id": "g5-t1", "title": "Navigation does not re-fetch cached lists", "passed": false },
+        { "id": "g5-t2", "title": "Join increments count immediately (optimistic)", "passed": false },
+        { "id": "g5-t3", "title": "Slow network shows optimistic then confirms/rolls back", "passed": false },
+        { "id": "g5-t4", "title": "Failed fetches show skeleton screens", "passed": false },
+        { "id": "g5-t5", "title": "Cross-account party creation appears in real-time", "passed": false },
+        { "id": "g5-t6", "title": "No duplicate socket listeners", "passed": false }
+      ]
+    },
+    {
+      "id": "group-6",
+      "title": "SFU Voice Architecture (mediasoup)",
+      "owner": "samuel",
+      "dependsOn": ["group-2", "group-3"],
+      "status": "not-started",
+      "fixes": ["V1", "V2", "V4", "V5"],
+      "steps": [
+        { "id": "g6-s1", "title": "Install mediasoup, scaffold worker", "done": false, "owner": "samuel" },
+        { "id": "g6-s2", "title": "Create mediasoup worker manager", "done": false, "owner": "samuel" },
+        { "id": "g6-s3", "title": "Create room router registry", "done": false, "owner": "samuel" },
+        { "id": "g6-s4", "title": "Create SFU socket handler", "done": false, "owner": "samuel" },
+        { "id": "g6-s5", "title": "Register SFU handlers conditionally", "done": false, "owner": "samuel" },
+        { "id": "g6-s6", "title": "TURN server configuration", "done": false, "owner": "samuel" },
+        { "id": "g6-s7", "title": "Web frontend SFU client (sfuVoiceManager)", "done": false, "owner": "samuel" },
+        { "id": "g6-s8", "title": "Single AudioContext for all peers", "done": false, "owner": "samuel" }
+      ],
+      "tests": [
+        { "id": "g6-t1", "title": "2-person voice call works end-to-end via SFU", "passed": false },
+        { "id": "g6-t2", "title": "10-person call: all hear each other, CPU reasonable", "passed": false },
+        { "id": "g6-t3", "title": "Corporate NAT user connects via TURN relay", "passed": false },
+        { "id": "g6-t4", "title": "Fallback to mesh works when ENABLE_SFU=false", "passed": false },
+        { "id": "g6-t5", "title": "Abrupt disconnect: others stop hearing within 5s", "passed": false },
+        { "id": "g6-t6", "title": "AudioContext count stays at 1 regardless of room size", "passed": false },
+        { "id": "g6-t7", "title": "mediasoup worker auto-restarts after crash", "passed": false },
+        { "id": "g6-t8", "title": "All sfu:* events match SOCKET_CONTRACT.md", "passed": false }
+      ]
+    },
+    {
+      "id": "group-7",
+      "title": "Mobile Parity (Flutter)",
+      "owner": "partner",
+      "dependsOn": ["group-3", "group-6"],
+      "status": "not-started",
+      "fixes": ["Full mobile sync"],
+      "steps": [
+        { "id": "g7-s1", "title": "Update REST API client for new endpoints", "done": false, "owner": "partner" },
+        { "id": "g7-s2", "title": "Add socket discovery subscription", "done": false, "owner": "partner" },
+        { "id": "g7-s3", "title": "Update party_provider.dart for real-time state", "done": false, "owner": "partner" },
+        { "id": "g7-s4", "title": "Implement SFU voice client (Flutter)", "done": false, "owner": "partner" },
+        { "id": "g7-s5", "title": "Optimistic UI for join/leave", "done": false, "owner": "partner" },
+        { "id": "g7-s6", "title": "Skeleton loading on party list screens", "done": false, "owner": "partner" }
+      ],
+      "tests": [
+        { "id": "g7-t1", "title": "Cross-platform party creation appears on mobile", "passed": false },
+        { "id": "g7-t2", "title": "Cross-platform party end disappears from mobile", "passed": false },
+        { "id": "g7-t3", "title": "Mobile voice works with web users via SFU", "passed": false },
+        { "id": "g7-t4", "title": "10+ participant call stable on mobile", "passed": false },
+        { "id": "g7-t5", "title": "Kicked mobile user blocked from rejoin", "passed": false },
+        { "id": "g7-t6", "title": "Optimistic join on mobile increments count immediately", "passed": false }
+      ]
+    },
+    {
+      "id": "group-8",
+      "title": "Discovery UX Fixes",
+      "owner": "samuel",
+      "dependsOn": ["group-1", "group-5"],
+      "status": "not-started",
+      "fixes": ["D3", "D4"],
+      "steps": [
+        { "id": "g8-s1", "title": "Fix For-You language fallback", "done": false, "owner": "samuel" },
+        { "id": "g8-s2", "title": "Add freshness boost for new rooms in trending", "done": false, "owner": "samuel" }
+      ],
+      "tests": [
+        { "id": "g8-t1", "title": "For-You shows fallback rooms when preferred language empty", "passed": false },
+        { "id": "g8-t2", "title": "Fresh 0-participant room ranks above older low-participant rooms", "passed": false },
+        { "id": "g8-t3", "title": "Freshness boost expires after 10 minutes", "passed": false }
+      ]
+    }
+  ]
+}
