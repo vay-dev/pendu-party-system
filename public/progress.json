@@ -329,7 +329,7 @@
         "group-1",
         "group-3"
       ],
-      "status": "not-started",
+      "status": "in-progress",
       "fixes": [
         "F1",
         "F2",
@@ -340,31 +340,32 @@
         {
           "id": "g5-s1",
           "title": "Create Redux partySlice",
-          "done": false,
+          "done": true,
           "owner": "samuel"
         },
         {
           "id": "g5-s2",
           "title": "Register slice in store",
-          "done": false,
+          "done": true,
           "owner": "samuel"
         },
         {
           "id": "g5-s3",
           "title": "Wire discovery socket to Redux dispatch",
-          "done": false,
+          "done": true,
           "owner": "samuel"
         },
         {
           "id": "g5-s4",
           "title": "Add skeleton screens to PartyCard",
           "done": false,
-          "owner": "samuel"
+          "owner": "samuel",
+          "note": "Skeleton SCSS exists in handoff doc; not yet wired to PartyCard component"
         },
         {
           "id": "g5-s5",
           "title": "Optimistic join/leave in usePartyActions",
-          "done": false,
+          "done": true,
           "owner": "samuel"
         }
       ],
@@ -462,14 +463,16 @@
         {
           "id": "g6-s7",
           "title": "Web frontend SFU client (sfuVoiceManager)",
-          "done": false,
-          "owner": "samuel"
+          "done": true,
+          "owner": "samuel",
+          "note": "sfuVoiceManager.ts with mediasoup-client Device, send/recv transports, produce/consume"
         },
         {
           "id": "g6-s8",
           "title": "Single AudioContext for all peers",
-          "done": false,
-          "owner": "samuel"
+          "done": true,
+          "owner": "samuel",
+          "note": "Shared AudioContext singleton in sfuVoiceManager; V4 mesh uses multiple (known)"
         }
       ],
       "tests": [
