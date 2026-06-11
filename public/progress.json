@@ -455,9 +455,9 @@
         {
           "id": "g6-s6",
           "title": "TURN server configuration",
-          "done": false,
+          "done": true,
           "owner": "samuel",
-          "note": "Client-side ICE servers; deferred to frontend integration"
+          "note": "party.ice.config.js reads STUN/TURN from env; iceServers returned in party:voice:joined"
         },
         {
           "id": "g6-s7",
